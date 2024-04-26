@@ -4,55 +4,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="controlle.dto.UtilisateurDTO"%>
 <html lang="fr">
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Clients</title>
-
- 	<!-- Page-Level Plugin CSS - Blank -->
-
-    <!-- SB Admin CSS - Include with every page -->
     <link href="<%=request.getContextPath() %>/resources/css/sb-admin.css" rel="stylesheet">
-    
-    <!-- Core CSS - Include with every page -->
     <link href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath() %>/resources/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <!-- Page-Level Plugin CSS - Tables -->
     <link href="<%=request.getContextPath() %>/resources/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- SB Admin CSS - Include with every page -->
     <link href="<%=request.getContextPath() %>/resources/css/sb-admin.css" rel="stylesheet">
-
 </head>
-
 <body>
-
     <div id="wrapper">
-    
   	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-    
     	<%@ include file="/WEB-INF/views/includes/entete.jsp" %>
-    	
     <div class="navbar-default navbar-static-side" role="navigation">
-    	
     	<%@ include file="/WEB-INF/views/menu_left/menuLeft.jsp" %>
-    	
-     <!-- /.sidebar-collapse -->
-   	
-   	</div>
-    
-     <!-- /.navbar-static-side -->
-     
+   	</div> 
     </nav>
-    
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                	 
                     <h1 class="page-header">Liste des utilisateurs</h1>
                     	<div class="row">
                     		<div class="col-lg-12">
@@ -110,15 +82,11 @@
 												                                 		 </font><font style="vertical-align: inherit;"></font><font style="vertical-align: inherit;"></font></font></div>
 												                                        <div class="modal-footer">
 												                                            <button type="button" class="btn btn-default" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-arrow-left">&nbsp;Annuler</i></font></font></button>
-												                                           
 												                                            <a href="/usersService/users?deleteId=${client.id}" type="button" class="btn btn-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-trash-o">&nbsp;Confirmer</i></font></font></a>
 												                                        </div>
 												                                    </div>
-												                                    <!-- /.modal-content -->
 												                                </div>
-												                                <!-- /.modal-dialog -->
-												                            </div>
-												                                                                	
+												                            </div>                          	
 					                                            		</td>
 					                                        		</tr>
 					                                        	</c:if>
@@ -127,45 +95,21 @@
 					                                    </tbody>
 					                                </table>
 					                            </div>
-					                            <!-- /.table-responsive -->
-					                            
 					                        </div>
-					                        <!-- /.panel-body -->
 					                    </div>
-					                    <!-- /.panel -->
 					                </div>
-					             
-                      			
-                      			  
-                       <!-- /.panel-body -->
-                    </div>
-                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        <!-- /#page-wrapper -
-    <!-- /#wrapper -->
-    <!-- Page-Level Demo Scripts - Blank - Use for reference -->
-    
-    <!-- Core Scripts - Include with every page -->
+                    			</div>
+                			 </div>
+            			</div>
     <script src="<%=request.getContextPath() %>/resources/js/jquery-1.10.2.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/bootstrap.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- Page-Level Plugin Scripts - Tables -->
     <script src="<%=request.getContextPath() %>/resources/js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="<%=request.getContextPath() %>/resources/js/plugins/dataTables/dataTables.bootstrap.js"></script>
-
-    <!-- SB Admin Scripts - Include with every page -->
     <script src="<%=request.getContextPath() %>/resources/js/sb-admin.js"></script>
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
     $(document).ready(function() {
         $('#dataTables-example').dataTable();
     });
     </script>
-
 </body>
-
 </html>
