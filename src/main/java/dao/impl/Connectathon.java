@@ -1,12 +1,15 @@
 package dao.impl;
 
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.sql.*;
+
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.annotation.WebServlet;
+
 import java.lang.System;
 
 @WebServlet("/connexionDB")
@@ -17,7 +20,7 @@ public class Connectathon extends HttpServlet {
 			Connection myCon=null;
 			 try {
 		        	Class.forName("com.mysql.cj.jdbc.Driver");
-		            myCon= DriverManager.getConnection("jdbc:mysql://localhost:3306/usersService","root","zing29");
+		            myCon= DriverManager.getConnection("jdbc:mysql://localhost:3306/usersservice","root","zing29");
 		        } catch (Exception e) {
 	            System.out.println("err");
 		            e.printStackTrace();
@@ -39,5 +42,4 @@ public class Connectathon extends HttpServlet {
 			// TODO Auto-generated method stub
 			doGet(request, response);
 		}
-
 }
