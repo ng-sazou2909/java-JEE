@@ -34,9 +34,8 @@ public class Login extends HttpServlet{
 				} else {
 					if (login.equals("admin") && clef.equals("passer")) {
 						HttpSession session = req.getSession();
-						session.setAttribute(login, login);
-						req.setAttribute("error", "");
-						req.getRequestDispatcher("/WEB-INF/views/home/home.jsp").forward(req, resp);
+						session.setAttribute("isConnected", true);
+						resp.sendRedirect("/usersService/home/");
 					}else {
 						//resp.getWriter().println("<H1>Erreur de connxion !!!<H1>");
 						req.setAttribute("error", "Erreur d'authentification");

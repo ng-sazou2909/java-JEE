@@ -88,9 +88,8 @@
 					                                            <td>${client.adresse}</td>
 					                                            <td>${client.mail}</td>
 					                                            <td>${client.phone}</td>
-
 					                                            <td align="center">
-					                                            	<a href="/usersService/users?id=${client.id}"><i class="${client.id!=null?'fa fa-edit':''}">&nbsp;</i></a>
+					                                            	<a href="/usersService/users?id=${client.id}"><i class="fa fa-edit">&nbsp;</i></a>
 					                                            	&nbsp;&nbsp;
 					                                            	<a href="#" style="color: red" data-toggle="modal" data-target="#myModal"><i class="${client.id!=null?'fa fa-trash-o':''}"></i></a>
 												                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -116,7 +115,7 @@
 												                                                                	
 					                                            		</td>
 					                                        		</tr>
-					                                        		</c:if>
+					                                        	</c:if>
 					                                    		</c:forEach>
 					                                    </tbody>
 					                                </table>
