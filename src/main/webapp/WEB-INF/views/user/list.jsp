@@ -1,5 +1,7 @@
-<c%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="controlle.dto.UtilisateurDTO"%>
 <html lang="fr">
 
@@ -80,7 +82,11 @@
 					                                        </tr>
 					                                    </thead>
 					                                    <tbody>
-					                                    	<c:forEach items="${clients}" var="client">
+					                                    <c:when test="${empty users}">
+											        		<p> Liste vide</p>
+											        	</c:when>
+											        	<c:when test="${not empty users}">
+					                                    <c:forEach items="${users}" var="client">
 					                                    	<c:if test="${not empty client.id}">
 					                                    	<tr>
 					                                            <td>${client.getNom()}</td>
@@ -89,7 +95,7 @@
 					                                            <td>${client.mail}</td>
 					                                            <td>${client.phone}</td>
 					                                            <td align="center">
-					                                            	<a href="/usersService/users?id=${client.id}"><i class="fa fa-edit">&nbsp;</i></a>
+					                                            	<a href="/usersService/users?id=${client.id}"><i class="${client.id!=null?'fa fa-edit':''}">&nbsp;</i></a>
 					                                            	&nbsp;&nbsp;
 					                                            	<a href="#" style="color: red" data-toggle="modal" data-target="#myModal"><i class="${client.id!=null?'fa fa-trash-o':''}"></i></a>
 												                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -117,6 +123,7 @@
 					                                        		</tr>
 					                                        	</c:if>
 					                                    		</c:forEach>
+					                                    	</c:when>
 					                                    </tbody>
 					                                </table>
 					                            </div>
@@ -138,11 +145,6 @@
             <!-- /.row -->
         <!-- /#page-wrapper -
     <!-- /#wrapper -->
-    <!-- Page-Level Plugin Scripts - Blank -->
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <script src="<%=request.getContextPath() %>/resources/js/sb-admin.js"></script>
-
     <!-- Page-Level Demo Scripts - Blank - Use for reference -->
     
     <!-- Core Scripts - Include with every page -->

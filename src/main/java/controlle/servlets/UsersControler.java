@@ -1,6 +1,7 @@
 package controlle.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import controlle.dto.UtilisateurDTO;
 import jakarta.servlet.ServletException;
@@ -14,6 +15,7 @@ import service.impl.UtilisateurServiceImpl;
 public class UsersControler extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<UtilisateurDTO> users = new ArrayList<UtilisateurDTO>();
 		String add = req.getParameter("add");
 		String id = req.getParameter("id");
 		String deleteId = req.getParameter("deleteId");
@@ -31,8 +33,9 @@ public class UsersControler extends HttpServlet {
 					req.setAttribute("clients", UtilisateurServiceImpl.all());
 					req.getRequestDispatcher("/WEB-INF/views/user/list.jsp").forward(req, resp);
 				}else{
-					req.setAttribute("clients", UtilisateurServiceImpl.all());
-					req.getRequestDispatcher("/WEB-INF/views/user/list.jsp").forward(req, resp);	
+					users = UtilisateurServiceImpl.all();
+					req.setAttribute("clients", users);
+					req.getRequestDispatcher("/WEB-INF/views/user/list.jsp").forward(req, resp);
 				}
 			}
 		}
