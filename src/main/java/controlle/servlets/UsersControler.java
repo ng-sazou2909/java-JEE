@@ -24,7 +24,7 @@ public class UsersControler extends HttpServlet {
 			if (id!=null&&!id.equals("")) {
 				UtilisateurDTO user = UtilisateurServiceImpl.getById(id);
 				req.setAttribute("client", user);
-				req.getRequestDispatcher("/WEB-INF/views/user/add.jsp").forward(req, resp);
+				req.getRequestDispatcher("/WEB-INF/views/user/update.jsp").forward(req, resp);
 			}else {
 				if (deleteId!=null&&!deleteId.equals("")) {
 					UtilisateurServiceImpl.delete(deleteId);
@@ -46,6 +46,18 @@ public class UsersControler extends HttpServlet {
 		String phone = req.getParameter("phone");
 		UtilisateurDTO user = new UtilisateurDTO(null, nom, prenom, adresse, mail, phone);
 		UtilisateurServiceImpl.save(user);
+		resp.sendRedirect(req.getContextPath() +"/users");
+	}
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		String nom = req.getParameter("nom");
+		String prenom = req.getParameter("prenom");
+		String adresse = req.getParameter("adresse");
+		String mail = req.getParameter("mail");
+		String phone = req.getParameter("phone");
+		UtilisateurDTO user = new UtilisateurDTO(id, nom, prenom, adresse, mail, phone);
+		UtilisateurServiceImpl.update(user);
 		resp.sendRedirect(req.getContextPath() +"/users");
 	}
 }
