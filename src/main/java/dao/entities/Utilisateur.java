@@ -9,8 +9,8 @@ public class Utilisateur implements Serializable{
 	private String adresse;
 	private String mail;
 	private String phone;
-	private boolean delete;
-	private boolean archive;
+	private boolean delete=false;
+	private boolean archive=false;
 	
 	public Utilisateur() {}
 
