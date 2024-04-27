@@ -18,7 +18,7 @@ public class UtilisateurDaoImpl{
 	public static List<Utilisateur> all() {
 		ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 		try {
-			Connection myCon= Connectathon.getCon();
+			Connection myCon = Connectathon.getCon();
 			PreparedStatement myStmt = myCon.prepareStatement("SELECT * FROM utilisateur");
 			ResultSet resultat = myStmt.executeQuery();
 			while (resultat.next()) {

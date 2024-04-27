@@ -1,19 +1,9 @@
 package dao.impl;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import jakarta.servlet.annotation.WebServlet;
-
-@WebServlet("/connexionDB")
-public class Connectathon extends HttpServlet {
-
+public class Connectathon{
 	    public Connectathon() {}
 		public  static Connection getCon() {
 			Connection myCon=null;
@@ -25,20 +15,5 @@ public class Connectathon extends HttpServlet {
 		            e.printStackTrace();
 		        }
 			 return myCon;
-		}
-
-		/**
-		 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-		 */
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		}
-
-		/**
-		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-		 */
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			// TODO Auto-generated method stub
-			doGet(request, response);
 		}
 }
