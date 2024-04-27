@@ -1,4 +1,4 @@
-<%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,8 +28,7 @@
 					                           Informations
 					            </div>
 					                        <div class="panel-body">
-								  				<form action="/usersService/users" method="put">
-    													<input type="hidden" name="id" value="${client.id}" />
+								  				<form action="/usersService/users?update=${client.id}" method="post">
 										    				<div class="form-group">
 					                                            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nom</font></font></label>                                      
 					                                            <input name="nom" value="${client.nom}" class="form-control" placeholder="Nom" required="required" />

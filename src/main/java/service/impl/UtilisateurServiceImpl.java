@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 
 import controlle.dto.UtilisateurDTO;
 import dao.impl.UtilisateurDaoImpl;
-import dao.interfaces.IUtilisateurDao;
 import mapper.impl.UtilisateurMapperImpl;
-import mapper.interfaces.IUtilisateurMapper;
-import service.interfaces.IUtilisateurService;
 
 @Service
 public class UtilisateurServiceImpl{

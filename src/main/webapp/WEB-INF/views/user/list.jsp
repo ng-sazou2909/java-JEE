@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<%@	taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="controlle.dto.UtilisateurDTO"%>
 <html lang="fr">
 <head>
@@ -54,12 +52,10 @@
 					                                        </tr>
 					                                    </thead>
 					                                    <tbody>
-					                                    <c:when test="${empty users}">
-											        		<p> Liste vide</p>
-											        	</c:when>
-											        	<c:when test="${not empty users}">
-					                                    <c:forEach items="${users}" var="client">
-					                                    	<c:if test="${not empty client.id}">
+					                                    <c:if test="${empty clients }">
+											        		<tr><p> Liste vide</p></tr>
+											        	</c:if>
+					                                    <c:forEach items="${clients}" var="client">
 					                                    	<tr>
 					                                            <td>${client.getNom()}</td>
 					                                            <td>${client.prenom}</td>
@@ -69,8 +65,8 @@
 					                                            <td align="center">
 					                                            	<a href="/usersService/users?id=${client.id}"><i class="${client.id!=null?'fa fa-edit':''}">&nbsp;</i></a>
 					                                            	&nbsp;&nbsp;
-					                                            	<a href="#" style="color: red" data-toggle="modal" data-target="#myModal"><i class="${client.id!=null?'fa fa-trash-o':''}"></i></a>
-												                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					                                            	<a href="#" style="color: red" data-toggle="modal" data-target="#myModal${client.id}"><i class="${client.id!=null?'fa fa-trash-o':''}"></i></a>
+												                            <div class="modal fade" id="myModal${client.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												                                <div class="modal-dialog">
 												                                    <div class="modal-content">
 												                                        <div class="modal-header">
@@ -89,9 +85,7 @@
 												                            </div>                          	
 					                                            		</td>
 					                                        		</tr>
-					                                        	</c:if>
-					                                    		</c:forEach>
-					                                    	</c:when>
+					                                    	</c:forEach>
 					                                    </tbody>
 					                                </table>
 					                            </div>

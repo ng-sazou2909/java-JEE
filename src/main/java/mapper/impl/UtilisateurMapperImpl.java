@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import controlle.dto.UtilisateurDTO;
 import dao.entities.Utilisateur;
-import mapper.interfaces.IUtilisateurMapper;
 @Component
 public class UtilisateurMapperImpl{
 	public static UtilisateurDTO getUtilisateurToUtilisateurDTO(Utilisateur data) {

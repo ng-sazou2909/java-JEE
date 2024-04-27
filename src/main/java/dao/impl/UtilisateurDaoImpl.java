@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import dao.entities.Utilisateur;
+import dao.interfaces.IUtilisateurDao;
 
 @Repository
 public class UtilisateurDaoImpl{
@@ -49,7 +50,7 @@ public class UtilisateurDaoImpl{
 
 	public static Utilisateur update(Utilisateur user) {
 		try {
-			String req = "UPDATE utilisateur set nom=?,prenom=?,mail=?,adresse=?,phone=? where id=?";
+			String req = "UPDATE utilisateur SET nom=?, prenom=?, mail=?, adresse=?, phone=? WHERE id=?";
 			Connection myCon= Connectathon.getCon();
 			PreparedStatement preparedStatement = myCon.prepareStatement(req);
 			preparedStatement.setString(1,user.getNom());
@@ -57,7 +58,7 @@ public class UtilisateurDaoImpl{
     		preparedStatement.setString(3,user.getMail());
     		preparedStatement.setString(4,user.getAdresse());
     		preparedStatement.setString(5,user.getPhone());
-    		preparedStatement.setInt(8,Integer.parseInt(user.getId()));
+    		preparedStatement.setInt(6,Integer.parseInt(user.getId()));
 			preparedStatement.executeUpdate();
 			return user;
 		} catch (SQLException e) {
@@ -68,7 +69,7 @@ public class UtilisateurDaoImpl{
 
 	public static boolean delete(String id) {
 		try {
-			String req = "DELETE FROM utilisateur WHERE  id=?";
+			String req = "DELETE FROM utilisateur WHERE id=?";
 			Connection myCon= Connectathon.getCon();
 			PreparedStatement preparedStatement = myCon.prepareStatement(req);
 			preparedStatement.setInt(1, Integer.parseInt(id));

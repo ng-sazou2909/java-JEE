@@ -3,6 +3,7 @@ package controlle.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import controlle.dto.UtilisateurDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -42,25 +43,26 @@ public class UsersControler extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nom = req.getParameter("nom");
-		String prenom = req.getParameter("prenom");
-		String adresse = req.getParameter("adresse");
-		String mail = req.getParameter("mail");
-		String phone = req.getParameter("phone");
-		UtilisateurDTO user = new UtilisateurDTO(null, nom, prenom, adresse, mail, phone);
-		UtilisateurServiceImpl.save(user);
-		resp.sendRedirect(req.getContextPath() +"/users");
-	}
-	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String nom = req.getParameter("nom");
-		String prenom = req.getParameter("prenom");
-		String adresse = req.getParameter("adresse");
-		String mail = req.getParameter("mail");
-		String phone = req.getParameter("phone");
-		UtilisateurDTO user = new UtilisateurDTO(id, nom, prenom, adresse, mail, phone);
-		UtilisateurServiceImpl.update(user);
-		resp.sendRedirect(req.getContextPath() +"/users");
+		String update = req.getParameter("update");
+		if (update!=null&&!update.equals("")) {
+			String nom = req.getParameter("nom");
+			String prenom = req.getParameter("prenom");
+			String adresse = req.getParameter("adresse");
+			String mail = req.getParameter("mail");
+			String phone = req.getParameter("phone");
+			UtilisateurDTO user = new UtilisateurDTO(update, nom, prenom, adresse, mail, phone);
+			UtilisateurServiceImpl.update(user);
+			resp.sendRedirect(req.getContextPath() +"/users");
+		}else {
+			  String nom = req.getParameter("nom");
+			  String prenom =req.getParameter("prenom");
+			  String adresse = req.getParameter("adresse");
+			  String mail = req.getParameter("mail");
+			  String phone = req.getParameter("phone");
+			  UtilisateurDTO user = new UtilisateurDTO(null, nom, prenom, adresse, mail, phone);
+			  UtilisateurServiceImpl.save(user);
+			  resp.sendRedirect(req.getContextPath() +"/users");
+			  }
+		 
 	}
 }
